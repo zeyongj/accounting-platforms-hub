@@ -1,4 +1,4 @@
-name: Validate Platform Hub
+name: Validate Accounting Platforms Hub
 on:
   push:
     branches: [main]

@@ -7,7 +7,24 @@ const app = <App authAvailable={Boolean(key)} />;
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     {key ? (
-      <ClerkProvider publishableKey={key} afterSignOutUrl="/">
+      <ClerkProvider
+        publishableKey={key}
+        afterSignOutUrl="/"
+        localization={{
+          signIn: {
+            start: {
+              title: "Sign in to Accounting Platforms Hub",
+              titleCombined: "Sign in to Accounting Platforms Hub",
+            },
+          },
+          signUp: {
+            start: {
+              title: "Create your Accounting Platforms Hub account",
+              titleCombined: "Create your Accounting Platforms Hub account",
+            },
+          },
+        }}
+      >
         {app}
       </ClerkProvider>
     ) : (

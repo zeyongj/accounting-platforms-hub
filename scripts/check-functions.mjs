@@ -12,7 +12,9 @@ async function load(name) {
 const [owner, manage, catalog] = await Promise.all(
   ["owner", "manage", "catalog"].map(load),
 );
-const request = new Request("https://platform-hub.example.com/api/owner");
+const request = new Request(
+  "https://accounting-platforms-hub.example.com/api/owner",
+);
 assert.equal(typeof catalog.GET, "function");
 assert.deepEqual(await (await owner.GET(request)).json(), { isOwner: false });
 assert.equal((await manage.GET(request)).status, 401);
@@ -33,5 +35,5 @@ assert.equal(
   401,
 );
 console.log(
-  "All compiled Platform Hub APIs boot; anonymous management is blocked.",
+  "All compiled Accounting Platforms Hub APIs boot; anonymous management is blocked.",
 );

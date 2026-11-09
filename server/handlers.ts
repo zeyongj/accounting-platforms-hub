@@ -6,6 +6,6 @@ export function productionHandlers() {
     store: createBlobCatalogStore(),
     authorize: createOwnerAuthorizer(),
     reportFailure: (operation) =>
-      console.error(`[Platform Hub] ${operation} failed.`),
+      console.error(`[Accounting Platforms Hub] ${operation} failed.`),
   });
 }

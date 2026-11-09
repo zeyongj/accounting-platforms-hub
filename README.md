@@ -1,20 +1,23 @@
-# Platform Hub
+# Accounting Platforms Hub
 
 A bilingual directory for project search, accounts payable, and residential management platforms. Visitors can search, filter, bookmark, copy links, and open tools. The verified Owner publishes one cloud-backed catalog for everyone.
 
-**Website:** [Platform Hub](https://zeyongj-platform-hub.vercel.app/)
+**Website:** [Accounting Platforms Hub](https://accounting-platforms-hub.vercel.app/)
 
-**Source:** [zeyongj/platform-hub](https://github.com/zeyongj/platform-hub)
+**Source:** [zeyongj/accounting-platforms-hub](https://github.com/zeyongj/accounting-platforms-hub)
 
 ## Included platforms
 
-| Category     | Platform                                                        |
-| ------------ | --------------------------------------------------------------- |
-| Global Scope | [Project Search Platform](https://zeyongj.github.io/)           |
-| AP Tools     | [BC Hydro Extractor](https://bc-hydro-extractor.vercel.app/)    |
-| AP Tools     | [Financial Distribution Tool](https://fa-converter.vercel.app/) |
-| AP Tools     | [AP Count Tool](https://ap-count.vercel.app/)                   |
-| RM Tools     | [RSU Comparison Tool](https://rancho-rsu-compare.vercel.app/)   |
+| Category     | Platform                                                                               |
+| ------------ | -------------------------------------------------------------------------------------- |
+| Global Scope | [Project Search Platform](https://zeyongj.github.io/)                                  |
+| AP Tools     | [BC Hydro Extractor](https://bc-hydro-extractor.vercel.app/)                           |
+| AP Tools     | [Financial Distribution Tool](https://fa-converter.vercel.app/)                        |
+| AP Tools     | [AP Count Tool](https://ap-count.vercel.app/)                                          |
+| AP Tools     | [Supplier Tracker - Compliance Management System](https://supplier-track.netlify.app/) |
+| RM Tools     | [RSU Comparison Tool](https://rancho-rsu-compare.vercel.app/)                          |
+
+The current directory includes six platforms: one Global Scope tool, four AP tools, and one RM tool. Supplier Tracker provides access to the supplier compliance management system.
 
 ## Visitor guide
 
@@ -27,7 +30,7 @@ A bilingual directory for project search, accounts payable, and residential mana
 
 ## Owner guide
 
-Choose **Owner sign in** and use the verified primary email configured in `HUB_OWNER_EMAIL`. Platform Hub has its own Clerk resource, separate from AP Count. First use may require registration and email verification in this new resource. Passwords and verification codes are entered only in Clerk's sign-in form.
+Choose **Owner sign in** and use the verified primary email configured in `HUB_OWNER_EMAIL`. Accounting Platforms Hub has its own Clerk resource, separate from AP Count. First use may require registration and email verification in this new resource. Passwords and verification codes are entered only in Clerk's sign-in form.
 
 Open **Manage directory**:
 
@@ -35,7 +38,7 @@ Open **Manage directory**:
 2. **Categories:** add and edit names, descriptions, icons, colors, and order. Move or delete a category's tools before deleting that category. IDs are internal stable identifiers, not user-facing names.
 3. **Review & publish:** changes stay in your draft until reviewed and published together. Preview the changes and visible tools before confirming. A successful publication is shared by all visitors. Open pages refresh when revisited after 30 seconds, or when refreshed manually.
 4. **Export draft / Import backup:** backups contain catalog settings only. Import validates the complete schema and changes the local draft; publishing is still required. Import never supplies an authoritative cloud revision. Export a backup before leaving a long editing session: drafts are held in memory and browser/tab closure can discard them.
-5. **History:** inspect private versions with server-recorded actor/time. Restoring an earlier catalog publishes it as a new version. Up to 30 versions are retained; the oldest versions are removed sooner if the 3 MiB storage bound is reached. The initial five-tool directory is retained as a baseline until normal retention removes it.
+5. **History:** inspect private versions with server-recorded actor/time. Restoring an earlier catalog publishes it as a new version. Up to 30 versions are retained; the oldest versions are removed sooner if the 3 MiB storage bound is reached. The initial directory is retained as a baseline until normal retention removes it.
 
 Deleting from the draft can be undone before another draft edit. Closing or loading the latest catalog with unsaved changes asks for confirmation. Published deletions can be reversed by restoring a retained version or importing a backup and publishing it.
 
@@ -57,7 +60,7 @@ Node.js 22.12+ or 24 LTS; npm. Configure the Vercel project before starting a fu
 
 ```sh
 npm ci
-vercel link --project platform-hub --scope YOUR_TEAM
+vercel link --project accounting-platforms-hub --scope YOUR_TEAM
 vercel env pull .env.local --environment=development
 vercel dev --listen 4173
 ```
@@ -83,7 +86,7 @@ This deployment is a personal, non-commercial demonstration on Vercel Hobby. Cle
 
 ## 中文说明
 
-Platform Hub 将 **Global Scope、AP Tools、RM Tools** 的五个平台集中展示，支持中英文搜索、分类筛选、收藏、复制链接和新标签页打开。首次访问默认英文；语言与收藏保存在当前浏览器，目录配置则由所有访客共享。
+Accounting Platforms Hub 将 **Global Scope、AP Tools、RM Tools** 的六个平台集中展示，支持中英文搜索、分类筛选、收藏、复制链接和新标签页打开。首次访问默认英文；语言与收藏保存在当前浏览器，目录配置则由所有访客共享。当前包括 1 个 Global Scope 工具、4 个 AP 工具、1 个 RM 工具；Supplier Tracker 用于进入供应商追踪与合规管理系统。
 
 ### Owner 管理
 
@@ -95,7 +98,7 @@ Platform Hub 将 **Global Scope、AP Tools、RM Tools** 的五个平台集中展
 2. 在“分类”中维护分类。分类仍有工具时不能删除，需先移动或删除其工具。
 3. 所有修改先保留为草稿，核对“发布预览”后统一发布。删除草稿内容后，可在进行下一次编辑前撤销。关闭或重新载入时会提示未保存修改；浏览器或标签页关闭会丢失内存中的草稿，长时间编辑请先导出备份。
 4. 导入备份只修改草稿，仍需发布；不会覆盖云端版本校验。错误链接、重复 URL、缺失分类或超限字段会阻止发布。
-5. “历史”显示操作人、时间和版本内容。恢复旧目录会新增一个版本，最多保留最近 30 版；达到 3 MiB 容量上限时会提前移除最旧版本。初始五个入口会作为基线保留，直到正常历史清理将其移除。
+5. “历史”显示操作人、时间和版本内容。恢复旧目录会新增一个版本，最多保留最近 30 版；达到 3 MiB 容量上限时会提前移除最旧版本。初始目录会作为基线保留，直到正常历史清理将其移除。
 
 只有经过服务器验证的 Owner 能管理目录和查看历史。普通访客无法获取隐藏工具或操作人信息。多人同时编辑时，较旧的发布会被拒绝，草稿仍可导出；请载入最新配置并复核后重试。
 

@@ -467,7 +467,7 @@ export default function OwnerPanel({
     );
     const link = document.createElement("a");
     link.href = url;
-    link.download = `platform-hub-catalog-${new Date().toISOString().slice(0, 10)}.json`;
+    link.download = `accounting-platforms-hub-catalog-${new Date().toISOString().slice(0, 10)}.json`;
     document.body.append(link);
     link.click();
     link.remove();

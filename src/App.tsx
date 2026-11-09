@@ -406,8 +406,8 @@ export default function App({ authAvailable }: { authAvailable: boolean }) {
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
     document.title =
       language === "zh"
-        ? "Platform Hub — 工具导航"
-        : "Platform Hub — Your tools, one place";
+        ? "Accounting Platforms Hub — 财务平台导航"
+        : "Accounting Platforms Hub — Your tools, one place";
   }, [language]);
   useEffect(() => {
     const onStorage = (event: StorageEvent) => {
@@ -494,6 +494,15 @@ export default function App({ authAvailable }: { authAvailable: boolean }) {
     ? categoriesById.get(categoryId)
     : undefined;
   const hasFilters = Boolean(query.trim() || categoryId || favoritesOnly);
+  const useFeaturedGrid = sort === "recommended" && !hasFilters;
+  const gridClassName = [
+    "tool-grid",
+    useFeaturedGrid && "featured-grid",
+    useFeaturedGrid && results.length % 3 === 2 && "featured-grid-wide",
+    useFeaturedGrid && results.length % 2 === 1 && "featured-grid-wide-small",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   function announce(value: Feedback) {
     setFeedback(value);
@@ -539,12 +548,12 @@ export default function App({ authAvailable }: { authAvailable: boolean }) {
         {t.explore}
       </a>
       <header className="topbar">
-        <a className="brand" href="#" aria-label="Platform Hub">
+        <a className="brand" href="#" aria-label="Accounting Platforms Hub">
           <span className="brand-mark">
             <Layers3 aria-hidden="true" />
           </span>
-          <span>
-            Platform <strong>Hub</strong>
+          <span className="brand-name">
+            <span>Accounting</span> <strong>Platforms Hub</strong>
           </span>
         </a>
         <div className="top-actions">
@@ -796,9 +805,7 @@ export default function App({ authAvailable }: { authAvailable: boolean }) {
               </button>
             </div>
           ) : results.length ? (
-            <div
-              className={`tool-grid${sort === "recommended" && !categoryId && !favoritesOnly && !query.trim() ? " featured-grid" : ""}`}
-            >
+            <div className={gridClassName}>
               {results.map((tool) => (
                 <ToolCard
                   key={tool.id}
