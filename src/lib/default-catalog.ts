@@ -121,6 +121,22 @@ const initialCatalog: HubCatalog = {
       order: 40,
     },
     {
+      id: "payment-status-check",
+      name: { en: "Payment Status Check", zh: "付款状态查询" },
+      description: {
+        en: "Match vendor statements with Inqflow exports to review invoice payment status.",
+        zh: "将供应商对账单与 Inqflow 导出记录匹配，核对发票付款状态。",
+      },
+      url: "https://payment-status-check.vercel.app/",
+      categoryId: "ap",
+      tags: ["Payments", "Invoices", "Reconciliation", "付款", "发票", "对账"],
+      icon: "file",
+      featured: false,
+      visible: true,
+      status: "active",
+      order: 50,
+    },
+    {
       id: "rsu-comparison",
       name: { en: "RSU Comparison Tool", zh: "RSU 对比工具" },
       description: {

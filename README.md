@@ -15,9 +15,10 @@ A bilingual directory for project search, accounts payable, and residential mana
 | AP Tools     | [Financial Distribution Tool](https://fa-converter.vercel.app/)                        |
 | AP Tools     | [AP Count Tool](https://ap-count.vercel.app/)                                          |
 | AP Tools     | [Supplier Tracker - Compliance Management System](https://supplier-track.netlify.app/) |
+| AP Tools     | [Payment Status Check](https://payment-status-check.vercel.app/)                       |
 | RM Tools     | [RSU Comparison Tool](https://rancho-rsu-compare.vercel.app/)                          |
 
-The current directory includes six platforms: one Global Scope tool, four AP tools, and one RM tool. Supplier Tracker provides access to the supplier compliance management system.
+The current directory includes seven platforms: one Global Scope tool, five AP tools, and one RM tool. Supplier Tracker provides access to the supplier compliance management system. Payment Status Check lets you check payment status.
 
 ## Visitor guide
 
@@ -87,7 +88,7 @@ This deployment is a personal, non-commercial demonstration on Vercel Hobby. Cle
 
 ## 中文说明
 
-Accounting Platforms Hub 将 **Global Scope、AP Tools、RM Tools** 的六个平台集中展示，支持中英文搜索、分类筛选、收藏、复制链接和新标签页打开。首次访问默认英文；语言与收藏保存在当前浏览器，目录配置则由所有访客共享。当前包括 1 个 Global Scope 工具、4 个 AP 工具、1 个 RM 工具；Supplier Tracker 用于进入供应商追踪与合规管理系统。
+Accounting Platforms Hub 将 **Global Scope、AP Tools、RM Tools** 的七个平台集中展示，支持中英文搜索、分类筛选、收藏、复制链接和新标签页打开。首次访问默认英文；语言与收藏保存在当前浏览器，目录配置则由所有访客共享。当前包括 1 个 Global Scope 工具、5 个 AP 工具、1 个 RM 工具；Supplier Tracker 用于进入供应商追踪与合规管理系统，Payment Status Check 用于查询付款状态。
 
 ### Owner 管理
 
