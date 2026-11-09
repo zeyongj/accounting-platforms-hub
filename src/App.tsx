@@ -155,7 +155,7 @@ const strings = {
     noFavoritesDescription:
       "点击工具上的书签图标即可收藏，收藏保存在当前浏览器中。",
     emptyDirectory: "目录已就绪，等待添加第一个工具。",
-    emptyDirectoryDescription: "Owner 可在“管理目录”中添加工具。",
+    emptyDirectoryDescription: "Owner 可在“管理导航”中添加工具。",
     featured: "精选",
     maintenance: "维护中",
     open: "打开平台",

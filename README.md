@@ -4,6 +4,8 @@ A bilingual directory for project search, accounts payable, and residential mana
 
 **Website:** [Platform Hub](https://zeyongj-platform-hub.vercel.app/)
 
+**Source:** [zeyongj/platform-hub](https://github.com/zeyongj/platform-hub)
+
 ## Included platforms
 
 | Category     | Platform                                                        |
