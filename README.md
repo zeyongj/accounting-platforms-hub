@@ -23,9 +23,10 @@ The current directory includes six platforms: one Global Scope tool, four AP too
 
 - English is the first-visit default. The global EN / 中文 selector remembers your choice in this browser.
 - Search names, descriptions, categories, and tags in either language. Latin search terms match word prefixes; Chinese terms also match within text. Multiple terms must all match.
+- Tags shown on cards follow the page language and remain fully visible without a hover tooltip. English omits tags containing Chinese characters. Chinese shows Chinese tags first and retains technical abbreviations such as AP, CSV, and RSU; tools without Chinese tags show their existing tags. This affects display only: search still includes every saved tag in both languages.
 - Choose a category or Favorites, and sort by configured order or name. Press `/` outside an editor to focus search; press Escape in search to clear it.
 - Bookmarks are personal to this browser and synchronize across its tabs. They do not create an account or change the shared catalog. If storage is blocked, bookmarks remain available for the current visit.
-- Each platform opens in a new tab. Copy link copies the saved URL. Maintenance labels are set by the Owner; they are not live uptime checks.
+- Select a tool's title, card body, or **Open platform** button to open its website in a new tab. Bookmark and Copy link remain separate controls. Copy link copies the saved URL. Maintenance labels are set by the Owner; they are not live uptime checks.
 - The hub does not collect search or launch analytics. Hosting and sign-in providers can process normal service/security metadata. Linked platforms have their own data handling and login requirements.
 
 ## Owner guide
@@ -34,7 +35,7 @@ Choose **Owner sign in** and use the verified primary email configured in `HUB_O
 
 Open **Manage directory**:
 
-1. **Tools:** add, edit, or delete entries. Configure English/Chinese names and descriptions, URL, category, searchable tags, icon, featured state, visibility, availability, and display order. Lower order numbers appear first within the configured sort.
+1. **Tools:** add, edit, or delete entries. Configure English/Chinese names and descriptions, URL, category, searchable tags, icon, featured state, visibility, availability, and display order. Add both English and Chinese tags for localized card display; all saved tags remain searchable regardless of page language. Lower order numbers appear first within the configured sort.
 2. **Categories:** add and edit names, descriptions, icons, colors, and order. Move or delete a category's tools before deleting that category. IDs are internal stable identifiers, not user-facing names.
 3. **Review & publish:** changes stay in your draft until reviewed and published together. Preview the changes and visible tools before confirming. A successful publication is shared by all visitors. Open pages refresh when revisited after 30 seconds, or when refreshed manually.
 4. **Export draft / Import backup:** backups contain catalog settings only. Import validates the complete schema and changes the local draft; publishing is still required. Import never supplies an authoritative cloud revision. Export a backup before leaving a long editing session: drafts are held in memory and browser/tab closure can discard them.
@@ -94,7 +95,7 @@ Accounting Platforms Hub 将 **Global Scope、AP Tools、RM Tools** 的六个平
 
 进入 **管理导航**：
 
-1. 在“工具”中新增、编辑、删除入口，设置中英文文字、链接、分类、标签、图标、精选、可见性、维护状态及顺序。
+1. 在“工具”中新增、编辑、删除入口，设置中英文文字、链接、分类、标签、图标、精选、可见性、维护状态及顺序。添加中英文标签以支持本地化展示；无论页面语言为何，所有已保存标签均可用于搜索。
 2. 在“分类”中维护分类。分类仍有工具时不能删除，需先移动或删除其工具。
 3. 所有修改先保留为草稿，核对“发布预览”后统一发布。删除草稿内容后，可在进行下一次编辑前撤销。关闭或重新载入时会提示未保存修改；浏览器或标签页关闭会丢失内存中的草稿，长时间编辑请先导出备份。
 4. 导入备份只修改草稿，仍需发布；不会覆盖云端版本校验。错误链接、重复 URL、缺失分类或超限字段会阻止发布。
@@ -103,6 +104,8 @@ Accounting Platforms Hub 将 **Global Scope、AP Tools、RM Tools** 的六个平
 只有经过服务器验证的 Owner 能管理目录和查看历史。普通访客无法获取隐藏工具或操作人信息。多人同时编辑时，较旧的发布会被拒绝，草稿仍可导出；请载入最新配置并复核后重试。
 
 ### 使用与隐私
+
+点击工具标题、卡片主体或“打开平台”按钮即可在新标签页打开对应网站；收藏与复制链接分别操作。卡片直接显示当前语言适用的全部标签，无需等待悬停提示。英文界面不显示含汉字的标签；中文界面优先显示中文标签，并保留 AP、CSV、RSU 等技术缩写。没有中文标签时显示现有标签。此规则只影响展示，中英文标签始终都可搜索。
 
 收藏和语言偏好只属于当前浏览器；工具目录由云端共享。导航页不记录搜索内容或打开平台的使用分析，托管与登录服务仍可能处理正常的服务和安全元数据。维护状态由 Owner 设置，并非实时可用性检测；各个平台有独立的数据处理和登录规则。
 

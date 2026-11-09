@@ -22,6 +22,7 @@ import ToolIcon from "./components/ToolIcon";
 import { validateCatalog } from "./lib/catalog";
 import {
   discoverTools,
+  displayTags,
   displayHost,
   localized,
   readFavoriteIds,
@@ -86,6 +87,7 @@ const strings = {
     featured: "Featured",
     maintenance: "Maintenance",
     open: "Open platform",
+    cardHint: "Select any card to open a platform",
     newTab: "opens in a new tab",
     favorite: "Add to favorites",
     unfavorite: "Remove from favorites",
@@ -110,7 +112,6 @@ const strings = {
     initial: "Original directory",
     copyright: "All rights reserved.",
     privacy: "No usage analytics",
-    moreTags: "more tags",
     clearCategory: "Show all categories",
     filteredCategory: "Category",
     authUnavailable: "Owner sign-in is temporarily unavailable.",
@@ -159,6 +160,7 @@ const strings = {
     featured: "精选",
     maintenance: "维护中",
     open: "打开平台",
+    cardHint: "点击任意工具卡片即可打开平台",
     newTab: "在新标签页打开",
     favorite: "添加收藏",
     unfavorite: "取消收藏",
@@ -181,7 +183,6 @@ const strings = {
     initial: "初始目录",
     copyright: "保留所有权利。",
     privacy: "无使用分析",
-    moreTags: "个其他标签",
     clearCategory: "显示全部分类",
     filteredCategory: "分类",
     authUnavailable: "Owner 登录服务暂不可用。",
@@ -269,7 +270,17 @@ function ToolCard({
         </span>
         <div>
           <div className="tool-title-line">
-            <h3>{name}</h3>
+            <h3>
+              <a
+                className="tool-card-link"
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t.open}: ${name} (${t.newTab})`}
+              >
+                {name}
+              </a>
+            </h3>
             {tool.featured ? (
               <span className="featured-label">
                 <Star aria-hidden="true" />
@@ -281,17 +292,9 @@ function ToolCard({
         </div>
       </div>
       <div className="tool-tags">
-        {tool.tags.slice(0, 3).map((tag) => (
+        {displayTags(tool.tags, language).map((tag) => (
           <span key={tag}>{tag}</span>
         ))}
-        {tool.tags.length > 3 ? (
-          <span
-            title={tool.tags.slice(3).join(", ")}
-            aria-label={`${tool.tags.length - 3} ${t.moreTags}`}
-          >
-            +{tool.tags.length - 3}
-          </span>
-        ) : null}
         {tool.status === "maintenance" ? (
           <span className="maintenance-badge">
             <span />
@@ -312,16 +315,10 @@ function ToolCard({
             <Copy aria-hidden="true" />
           </button>
         </div>
-        <a
-          className="launch-link"
-          href={tool.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${t.open}: ${name} (${t.newTab})`}
-        >
+        <span className="launch-link" aria-hidden="true">
           {t.open}
           <ArrowUpRight aria-hidden="true" />
-        </a>
+        </span>
       </div>
     </article>
   );
@@ -736,6 +733,12 @@ export default function App({ authAvailable }: { authAvailable: boolean }) {
                   <span className="favorites-note"> · {t.localFavorites}</span>
                 ) : null}
               </p>
+              {results.length ? (
+                <p className="card-hint">
+                  <ArrowUpRight aria-hidden="true" />
+                  {t.cardHint}
+                </p>
+              ) : null}
             </div>
             <div className="directory-actions">
               {hasFilters ? (

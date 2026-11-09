@@ -6,6 +6,29 @@ export function localized(text: LocalizedText, language: Language): string {
   return text[language].trim() || text.en.trim() || text.zh.trim();
 }
 
+export function displayTags(
+  tags: readonly string[],
+  language: Language,
+): string[] {
+  const uniqueTags = [
+    ...new Set(tags.map((tag) => tag.trim()).filter(Boolean)),
+  ];
+  const hasHan = (tag: string) => /\p{Script=Han}/u.test(tag);
+  const nonHanTags = uniqueTags.filter((tag) => !hasHan(tag));
+  if (language === "en") return nonHanTags;
+
+  const chineseTags = uniqueTags.filter(hasHan);
+  if (!chineseTags.length) return nonHanTags;
+  const technicalTags = nonHanTags.filter(
+    (tag) =>
+      ![...tag].some(
+        (character) =>
+          /\p{Script=Latin}/u.test(character) && /\p{Ll}/u.test(character),
+      ),
+  );
+  return [...chineseTags, ...technicalTags];
+}
+
 function searchable(value: string): string {
   return value.normalize("NFKC").toLowerCase();
 }

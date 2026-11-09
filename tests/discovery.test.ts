@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import {
   discoverTools,
   displayHost,
+  displayTags,
   localized,
   readFavoriteIds,
   readLanguage,
@@ -146,6 +147,64 @@ describe("tool discovery", () => {
     expect(
       discoverTools(catalog, { ...base, categoryId: "not-present" }),
     ).toEqual([]);
+  });
+});
+
+describe("display tags", () => {
+  test("English omits Han and mixed-language tags without falling back to Chinese", () => {
+    expect(displayTags(["查询", "物业"], "en")).toEqual([]);
+    expect(displayTags(["Projects", "AP 发票", "查询", "RM"], "en")).toEqual([
+      "Projects",
+      "RM",
+    ]);
+  });
+  test("Chinese displays Han tags first and keeps technical abbreviations and neutral tags", () => {
+    expect(
+      displayTags(
+        ["Suppliers", "CSV", "供应商", "AP", "Tracking", "合规", "RSU", "2026"],
+        "zh",
+      ),
+    ).toEqual(["供应商", "合规", "CSV", "AP", "RSU", "2026"]);
+    expect(displayTags(["Café", "合规", "PDF"], "zh")).toEqual(["合规", "PDF"]);
+  });
+  test("Chinese falls back to existing tags when no Han tags are available", () => {
+    expect(displayTags(["BC Hydro", "Utility", "PDF"], "zh")).toEqual([
+      "BC Hydro",
+      "Utility",
+      "PDF",
+    ]);
+  });
+  test("trims and deduplicates without mutating the original array", () => {
+    const tags = Object.freeze([" AP ", "发票", "AP", "", " ", "发票 ", "CSV"]);
+    expect(displayTags(tags, "en")).toEqual(["AP", "CSV"]);
+    expect(displayTags(tags, "zh")).toEqual(["发票", "AP", "CSV"]);
+    expect(tags).toEqual([" AP ", "发票", "AP", "", " ", "发票 ", "CSV"]);
+  });
+  test("recognizes supplementary-plane Han characters", () => {
+    const tags = ["𠀀", "Project 𠀀", "RM"];
+    expect(displayTags(tags, "en")).toEqual(["RM"]);
+    expect(displayTags(tags, "zh")).toEqual(["𠀀", "Project 𠀀", "RM"]);
+  });
+  test("presentation filtering does not remove bilingual tags from search", () => {
+    const taggedCatalog = {
+      ...catalog,
+      tools: [tool("compliance", { tags: ["Compliance", "合规"] })],
+    };
+    expect(displayTags(taggedCatalog.tools[0].tags, "en")).toEqual([
+      "Compliance",
+    ]);
+    expect(
+      discoverTools(taggedCatalog, { ...base, query: "合规" }).map(
+        (item) => item.id,
+      ),
+    ).toEqual(["compliance"]);
+    expect(
+      discoverTools(taggedCatalog, {
+        ...base,
+        query: "compliance",
+        language: "zh",
+      }).map((item) => item.id),
+    ).toEqual(["compliance"]);
   });
 });
 
