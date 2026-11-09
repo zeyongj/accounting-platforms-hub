@@ -102,6 +102,25 @@ const initialCatalog: HubCatalog = {
       order: 30,
     },
     {
+      id: "supplier-tracker",
+      name: {
+        en: "Supplier Tracker - Compliance Management System",
+        zh: "供应商追踪与合规管理",
+      },
+      description: {
+        en: "Access the supplier compliance management system.",
+        zh: "进入供应商追踪与合规管理系统。",
+      },
+      url: "https://supplier-track.netlify.app/",
+      categoryId: "ap",
+      tags: ["Suppliers", "Compliance", "Tracking", "供应商", "合规"],
+      icon: "file",
+      featured: false,
+      visible: true,
+      status: "active",
+      order: 40,
+    },
+    {
       id: "rsu-comparison",
       name: { en: "RSU Comparison Tool", zh: "RSU 对比工具" },
       description: {
